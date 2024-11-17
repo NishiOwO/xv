@@ -1,5 +1,8 @@
 #!/bin/sh
-NUM=4
+NUM=`grep processor /proc/cpuinfo | wc -l | sed "s/ //g"`
+if [ "$NUM" = "0" ]; then
+	NUM=4
+fi
 xmkmf || exit 1
 gmake depend
 cd jpeg
