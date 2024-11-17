@@ -15,6 +15,12 @@
 #define HaveTiff
 
 
+/* if, for whatever reason, you're unable to get the PNG library to compile
+ * on your machine, *COMMENT OUT* the following line
+ */
+#define HavePng
+
+
 /* if, for whatever reason, you're unable to get the PDS/VICAR support
  * to compile (xvpds.c, and vdcomp.c), *COMMENT OUT* the following line
  */
@@ -134,6 +140,13 @@ LIBTIFF = $(TIFFDIR)/libtiff.a
 TIFFINCLUDE = -I$(TIFFDIR)
 #endif
 
+#ifdef HavePng
+PNG = -DDOPNG
+PNGDIR = png
+LIBPNG = $(PNGDIR)/libpng.a zlib/libz.a
+PNGINCLUDE = -I$(PNGDIR)
+#endif
+
 #ifdef HavePDS
 PDS = -DDOPDS
 #endif
@@ -149,14 +162,14 @@ SYS_LIBRARIES=        -lm
 #endif
 
 
-DEPLIBS = $(LIBJPEG) $(LIBTIFF)
+DEPLIBS = $(LIBJPEG) $(LIBTIFF) $(LIBPNG)
 LOCAL_LIBRARIES = $(XLIB) $(DEPLIBS)
 
 DEFINES= $(SCO) $(UNIX) $(NODIRENT) $(VPRINTF) $(TIMERS) \
-	$(HPUX7) $(JPEG) $(TIFF) $(PDS) $(DXWM) $(RAND) \
+	$(HPUX7) $(JPEG) $(TIFF) $(PNG) $(PDS) $(DXWM) $(RAND) \
 	$(BACKING_STORE) $(BSDTYPES) $(SGI) $(MGCSFX) -DDOCDIR=\"/usr/share/man\"
 
-INCLUDES = $(JPEGINCLUDE) $(TIFFINCLUDE)
+INCLUDES = $(JPEGINCLUDE) $(TIFFINCLUDE) $(PNGINCLUDE)
 
 SRCS1 =	xv.c xvevent.c xvroot.c xvmisc.c xvimage.c xvcolor.c xvsmooth.c \
 	xv24to8.c xvgif.c xvpm.c xvinfo.c xvctrl.c xvscrl.c xvalg.c \

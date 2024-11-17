@@ -1036,16 +1036,21 @@ TIFFDIR = tiff
 LIBTIFF = $(TIFFDIR)/libtiff.a
 TIFFINCLUDE = -I$(TIFFDIR)
 
+PNG = -DDOPNG
+PNGDIR = png
+LIBPNG = $(PNGDIR)/libpng.a zlib/libz.a
+PNGINCLUDE = -I$(PNGDIR)
+
 PDS = -DDOPDS
 
 SYS_LIBRARIES=        -lm
 
-DEPLIBS = $(LIBJPEG) $(LIBTIFF)
+DEPLIBS = $(LIBJPEG) $(LIBTIFF) $(LIBPNG)
 LOCAL_LIBRARIES = $(XLIB) $(DEPLIBS)
 
-DEFINES= $(SCO) $(UNIX) $(NODIRENT) $(VPRINTF) $(TIMERS) 	$(HPUX7) $(JPEG) $(TIFF) $(PDS) $(DXWM) $(RAND) 	$(BACKING_STORE) $(BSDTYPES) $(SGI) $(MGCSFX) -DDOCDIR=\"/usr/share/man\"
+DEFINES= $(SCO) $(UNIX) $(NODIRENT) $(VPRINTF) $(TIMERS) 	$(HPUX7) $(JPEG) $(TIFF) $(PNG) $(PDS) $(DXWM) $(RAND) 	$(BACKING_STORE) $(BSDTYPES) $(SGI) $(MGCSFX) -DDOCDIR=\"/usr/share/man\"
 
-INCLUDES = $(JPEGINCLUDE) $(TIFFINCLUDE)
+INCLUDES = $(JPEGINCLUDE) $(TIFFINCLUDE) $(PNGINCLUDE)
 
 SRCS1 =	xv.c xvevent.c xvroot.c xvmisc.c xvimage.c xvcolor.c xvsmooth.c 	xv24to8.c xvgif.c xvpm.c xvinfo.c xvctrl.c xvscrl.c xvalg.c 	xvgifwr.c xvdir.c xvbutt.c xvpbm.c xvxbm.c xvgam.c xvbmp.c 	xvdial.c xvgraf.c xvsunras.c xvjpeg.c xvps.c xvpopup.c xvdflt.c 	xvtiff.c xvtiffwr.c xvpds.c xvrle.c xviris.c xvgrab.c vprintf.c 	xvbrowse.c xvtext.c xvpcx.c xviff.c xvtarga.c xvxpm.c xvcut.c 	xvxwd.c xvfits.c xvpng.c xvzx.c xvwbmp.c xvpcd.c 	xvmag.c xvpic.c xvmaki.c xvpi.c xvpic2.c xvvd.c xvmgcsfx.c 	xvml.c
 
