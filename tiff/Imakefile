@@ -22,7 +22,7 @@ tif_compress.o: Imakefile
 #if HasGcc
 g3states.h: mkg3states.c t4.h
 	-${RM} g3states.h
-	${CC} -traditional -o mkg3states ${CFLAGS} mkg3states.c
+	${CC} -o mkg3states ${CFLAGS} mkg3states.c
 	./mkg3states > g3states.h || rm g3states.h
 #else
 g3states.h: mkg3states.c t4.h

@@ -298,7 +298,7 @@ static int copyTiff(in, fname)
   if (TIFFGetField(in, TIFFTAG_COMPRESSION, &shortv)){
     /* Currently, the TIFF Library cannot correctly copy TIFF version 6.0 (or
      * earlier) files that use "old" JPEG compression, so don't even try. */
-    if (shortv == COMPRESSION_OJPEG) return 0;
+    if (shortv == COMPRESSION_JPEG) return 0;
     TIFFSetField(out, TIFFTAG_COMPRESSION, shortv);
   }
   CopyField (TIFFTAG_SUBFILETYPE,         longv);
@@ -338,7 +338,7 @@ static int copyTiff(in, fname)
   CopyField (TIFFTAG_HOSTCOMPUTER,        stringv);
   CopyField (TIFFTAG_PAGENAME,            stringv);
   CopyField (TIFFTAG_DOCUMENTNAME,        stringv);
-  CopyField2(TIFFTAG_JPEGTABLES,          longv, stringv);
+  /*CopyField2(TIFFTAG_JPEGTABLES,          longv, stringv);*/
   CopyField (TIFFTAG_YCBCRCOEFFICIENTS,   floatav);
   CopyField2(TIFFTAG_YCBCRSUBSAMPLING,    shortv,shortv2);
   CopyField (TIFFTAG_YCBCRPOSITIONING,    shortv);
@@ -791,7 +791,7 @@ static int gt(tif, w, h, raster)
       if (planarconfig == PLANARCONFIG_CONTIG) {
         /* can rely on libjpeg to convert to RGB (assuming newer libtiff,
          * compiled with appropriate forms of JPEG support) */
-        TIFFSetField(tif, TIFFTAG_JPEGCOLORMODE, JPEGCOLORMODE_RGB);
+        /*TIFFSetField(tif, TIFFTAG_JPEGCOLORMODE, JPEGCOLORMODE_RGB);*/
         photometric = PHOTOMETRIC_RGB;
       } else {
         TIFFError(filename, "Cannot handle format");

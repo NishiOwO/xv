@@ -31,8 +31,10 @@
 
 #include <memory.h>
 #ifndef alloca
+#ifndef __NetBSD__
 #  include <alloca.h> /* "not in POSIX or SUSv3" according to Linux man page */
 #endif                /* ...but required for Sun C compiler (alloca = macro) */
+#endif
 
 #define  TRACE  0
 #if TRACE
