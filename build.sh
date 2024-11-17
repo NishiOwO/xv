@@ -8,21 +8,39 @@ xmkmf || exit 1
 gmake depend
 
 cd jpeg
-./configure || exit 1
-gmake -j$NUM || exit 1
+if [ ! -e configured ]; then
+	./configure || exit 1
+	touch configured
+fi
+if [ ! -e built ]; then
+	gmake -j$NUM || exit 1
+	touch built
+fi
 cd ..
 
 cd zlib
-./configure || exit 1
-gmake -j$NUM || exit 1
+if [ ! -e configured ]; then
+	./configure || exit 1
+	touch configured
+fi
+if [ ! -e built ]; then
+	gmake -j$NUM || exit 1
+	touch built
+fi
 cd ..
 
 cd png
-gmake -j$NUM || exit 1
+if [ ! -e built ]; then
+	gmake -j$NUM || exit 1
+	touch built
+fi
 cd ..
 
 cd tiff
-xmkmf || exit 1
-gmake -j$NUM || exit 1
+if [ ! -e built ]; then
+	xmkmf || exit 1
+	gmake -j$NUM || exit 1
+	touch built
+fi
 cd ..
 gmake -j$NUM
