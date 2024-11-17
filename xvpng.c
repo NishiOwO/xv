@@ -1097,6 +1097,7 @@ int LoadPNG(fname, pinfo)
   for (i = 0; i < pass; i++) {
     byte *p = pinfo->pic;
     for (j = 0; j < pinfo->h; j++) {
+      int incr = 0;
       png_read_row(png_ptr, p, NULL);
       read_anything = 1;
       if ((j & 0x1f) == 0) WaitCursor();

@@ -6,17 +6,21 @@ if [ "$NUM" = "0" ]; then
 fi
 xmkmf || exit 1
 gmake depend
+
 cd jpeg
 ./configure || exit 1
 gmake -j$NUM || exit 1
 cd ..
-cd png
-gmake -j$NUM || exit 1
-cd ..
+
 cd zlib
 ./configure || exit 1
 gmake -j$NUM || exit 1
 cd ..
+
+cd png
+gmake -j$NUM || exit 1
+cd ..
+
 cd tiff
 xmkmf || exit 1
 gmake -j$NUM || exit 1

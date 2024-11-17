@@ -187,8 +187,8 @@ TIFFReadDirectory(TIFF* tif)
 		 */
 		if (dp->tdir_tag < fip->field_tag) {
 			if (!diroutoforderwarning) {
-				TIFFWarning(tif->tif_name,
-	"invalid TIFF directory; tags are not sorted in ascending order");
+				/*TIFFWarning(tif->tif_name,
+	"invalid TIFF directory; tags are not sorted in ascending order");*/
 				diroutoforderwarning = 1;
 			}
 			fip = tiffFieldInfo;	/* O(n^2) */
@@ -196,9 +196,9 @@ TIFFReadDirectory(TIFF* tif)
 		while (fip->field_tag && fip->field_tag < dp->tdir_tag)
 			fip++;
 		if (!fip->field_tag || fip->field_tag != dp->tdir_tag) {
-			TIFFWarning(tif->tif_name,
+			/*TIFFWarning(tif->tif_name,
 			    "unknown field with tag %d (0x%x) ignored",
-			    dp->tdir_tag,  dp->tdir_tag);
+			    dp->tdir_tag,  dp->tdir_tag);*/
 			dp->tdir_tag = IGNORE;
 			fip = tiffFieldInfo;	/* restart search */
 			continue;
@@ -219,9 +219,9 @@ TIFFReadDirectory(TIFF* tif)
 				break;
 			fip++;
 			if (!fip->field_tag || fip->field_tag != dp->tdir_tag) {
-				TIFFWarning(tif->tif_name,
+				/*TIFFWarning(tif->tif_name,
 				   "wrong data type %d for \"%s\"; tag ignored",
-				    dp->tdir_type, fip[-1].field_name);
+				    dp->tdir_type, fip[-1].field_name);*/
 				goto ignore;
 			}
 		}
@@ -576,10 +576,10 @@ static int
 CheckDirCount(TIFF* tif, TIFFDirEntry* dir, uint32 count)
 {
 	if (count != dir->tdir_count) {
-		TIFFWarning(tif->tif_name,
+		/*TIFFWarning(tif->tif_name,
 	"incorrect count for field \"%s\" (%lu, expecting %lu); tag ignored",
 		    TIFFFieldWithTag(dir->tdir_tag)->field_name,
-		    dir->tdir_count, count);
+		    dir->tdir_count, count);*/
 		return (0);
 	}
 	return (1);
