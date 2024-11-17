@@ -1,5 +1,6 @@
 #!/bin/sh
 NUM=`grep processor /proc/cpuinfo | wc -l | sed "s/ //g"`
+export IMAKECPP="`which gcpp || which cpp`"
 if [ "$NUM" = "0" ]; then
 	NUM=4
 fi
