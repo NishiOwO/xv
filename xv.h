@@ -160,10 +160,12 @@
 #ifndef VMS
 #  include <errno.h>
 #  ifndef __NetBSD__
+#ifndef __FreeBSD__
 #    if !(defined __GLIBC__ && __GLIBC__ >= 2)
        extern int   errno;         /* SHOULD be in errno.h, but often isn't */
        extern char *sys_errlist[]; /* this too... */
 #    endif
+#endif
 #  endif
 #endif
 
