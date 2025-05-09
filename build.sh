@@ -1,5 +1,4 @@
 #!/bin/sh
-CC=/usr/pkg/gcc14/bin/gcc
 CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types"
 
 export CC
