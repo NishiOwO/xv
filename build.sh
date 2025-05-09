@@ -1,4 +1,6 @@
 #!/bin/sh
+CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types"
+
 NUM=`grep processor /proc/cpuinfo | wc -l | sed "s/ //g"`
 export IMAKECPP="`which gcpp || which cpp13 || which cpp`"
 if [ "$NUM" = "0" ]; then
