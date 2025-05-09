@@ -167,7 +167,7 @@ LOCAL_LIBRARIES = $(XLIB) $(DEPLIBS)
 
 DEFINES= $(SCO) $(UNIX) $(NODIRENT) $(VPRINTF) $(TIMERS) \
 	$(HPUX7) $(JPEG) $(TIFF) $(PNG) $(PDS) $(DXWM) $(RAND) \
-	$(BACKING_STORE) $(BSDTYPES) $(SGI) $(MGCSFX) -DDOCDIR=\"/usr/share/man\"
+	$(BACKING_STORE) $(BSDTYPES) $(SGI) $(MGCSFX) -DDOCDIR=\"/usr/share/man\" -Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types
 
 INCLUDES = $(JPEGINCLUDE) $(TIFFINCLUDE) $(PNGINCLUDE)
 
