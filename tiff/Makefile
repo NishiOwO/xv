@@ -35,7 +35,7 @@ all::
 
 # platform:  $XFree86: xc/config/cf/NetBSD.cf,v 3.122 2003/11/18 18:09:45 dawes Exp $
 
-# operating system:  NetBSD/amd64 10.0 OSBinaryType (10.0.1)
+# operating system:  NetBSD/amd64 10.1_STABLE OSBinaryType (10.1.1)
 
 # $Xorg: bsdLib.rules,v 1.3 2000/08/17 19:41:47 cpqbld Exp $
 

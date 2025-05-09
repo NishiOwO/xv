@@ -1,4 +1,4 @@
-DEFINES=-I. -Dunix
+DEFINES=-I. -Dunix -Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types
 
 SRCS=   tif_fax3.c tif_fax4.c tif_aux.c tif_ccittrle.c tif_close.c          \
 	tif_compress.c tif_dir.c tif_dirinfo.c tif_dirread.c   \

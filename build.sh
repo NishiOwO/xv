@@ -1,5 +1,9 @@
 #!/bin/sh
+CC=/usr/pkg/gcc14/bin/gcc
 CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types"
+
+export CC
+export CFLAGS
 
 NUM=`grep processor /proc/cpuinfo | wc -l | sed "s/ //g"`
 export IMAKECPP="`which gcpp || which cpp13 || which cpp`"

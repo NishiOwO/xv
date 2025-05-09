@@ -12,18 +12,18 @@
 # To install in $HOME instead of /usr/local, use:
 #    make install prefix=$HOME
 
-CC=gcc
+CC=/usr/pkg/gcc14/bin/gcc
 
-CFLAGS=-O3 -DHAVE_HIDDEN
+CFLAGS=-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types -DHAVE_HIDDEN
 #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
 #CFLAGS=-g -DZLIB_DEBUG
 #CFLAGS=-O3 -Wall -Wwrite-strings -Wpointer-arith -Wconversion \
 #           -Wstrict-prototypes -Wmissing-prototypes
 
-SFLAGS=-O3 -fPIC -DHAVE_HIDDEN
+SFLAGS=-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-pointer-types -fPIC -DHAVE_HIDDEN
 LDFLAGS=
 TEST_LIBS=-L. libz.a
-LDSHARED=gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map
+LDSHARED=/usr/pkg/gcc14/bin/gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map
 CPP=
 
 STATICLIB=libz.a
